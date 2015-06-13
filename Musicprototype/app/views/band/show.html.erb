@@ -1,0 +1,11 @@
+<p>
+  <h1><%= @band.title %></h1>
+</p>
+ 
+
+<h2>Songs</h2>
+
+<%= render @band.songs %>
+
+
+<%= link_to 'Back', band_index_path %>

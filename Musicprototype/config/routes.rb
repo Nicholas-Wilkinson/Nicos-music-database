@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   get 'welcome/index'
+  post 'articles/new' => 'articles#create'
 
-  resources :articles
+  resources :articles do
+	resources :comments
+  end
+  
+  resources :band do
+	resources :songs
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

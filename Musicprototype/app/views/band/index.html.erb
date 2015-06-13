@@ -1,0 +1,25 @@
+<h1>Listing Songs</h1>
+
+<%= form_tag band_index_path, method: :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+	<%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<table cellspacing="20px">
+  <tr>
+    <th align="left">Band</th>
+    <th align="left">Song</th>
+	<th colspan="2"></th>
+  </tr>
+ 
+  <% @band.each do |band| %>
+    <tr>
+      <td valign="top" width="100px"><%= band.title %><br>
+	   <%= link_to 'Show Band', band_path(band) %></td>
+	  <td><%= render band.songs %></td>
+	
+    </tr>
+  <% end %>
+</table>

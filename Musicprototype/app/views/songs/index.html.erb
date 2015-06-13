@@ -1,0 +1,17 @@
+<h1>Listing Songs</h1>
+## <%= link_to 'New article', new_article_path %>
+<table>
+  <tr>
+    <th>Band</th>
+    <th>Song</th>
+	<th colspan="2"></th>
+  </tr>
+ 
+  <% @band.each do |band| %>
+    <tr>
+      <td><%= band.title %></td>
+      <td><%= song.title %></td>
+##	  <td><%= link_to 'Link',  %></td>
+    </tr>
+  <% end %>
+</table>
