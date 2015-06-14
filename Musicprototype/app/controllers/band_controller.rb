@@ -1,10 +1,15 @@
 class BandController < ApplicationController
 	def index
-	if params[:search].present? 
-		@foundband = Band.search(params[:search])
-	else
-		@foundband = Band.all
-	end	
+	  @foundband = Band.search(params[:search])
+		if @foundband.blank?
+			@bandlist = 1
+		elsif params[:search].present?
+			@bandlist = 0
+		else
+			@bandlist = 2
+			@foundband = Band.all
+
+			end
 	  @songs = Song.search(params[:search])
 		if @songs.blank?
 			@songlist = 1
@@ -25,5 +30,32 @@ class BandController < ApplicationController
 		@band = Band.find(params[:id])
 		@songs = @band.songs
 	end	
+	
+	def new
+		@band = Band.new
+	end
+	
+	def create
+		@band = Band.new(band_params)
+		
+		if @band.save
+		  redirect_to @band
+		else
+		  render 'new'
+		end
+	end
+	
+	def destroy
+	  @band = Band.find(params[:id])
+	  @band.destroy
+	   
+	  redirect_to band_path
+	end
+	
+				
+	private
+		def band_params
+		params.require(:band).permit(:title)
+		end
 	
 end

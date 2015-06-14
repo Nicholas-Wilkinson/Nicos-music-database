@@ -6,8 +6,15 @@
 	<%= submit_tag "Search" %>
   </p>
 <% end %>
-
-<strong>The following bands matched your input</strong>
+<%= link_to 'Add a band', new_band_path %>
+<br>
+<br>
+<% if @bandlist == 1 %>
+<strong>no bands matched your input</strong>
+<% elsif @bandlist == 0 %>
+<strong>the following bands matched your input</strong>
+<% else %>
+<% end %>
 <table cellspacing="8px">
   
   <% @foundband.each do |b| %>

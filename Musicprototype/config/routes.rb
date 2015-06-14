@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'welcome/index'
   post 'articles/new' => 'articles#create'
+  
   get 'band/songindex' => 'band#songindex'
+  post 'band/new' => 'band#create'
 
   resources :articles do
 	resources :comments
