@@ -1,25 +1,46 @@
-<h1>Listing Songs</h1>
-
+<h1>Listing Bands</h1>
+<%= link_to 'List of songs', band_songindex_path %>
 <%= form_tag band_index_path, method: :get do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
-	<%= submit_tag "Search", :name => nil %>
+	<%= submit_tag "Search" %>
   </p>
 <% end %>
 
-<table cellspacing="20px">
-  <tr>
-    <th align="left">Band</th>
-    <th align="left">Song</th>
-	<th colspan="2"></th>
-  </tr>
- 
-  <% @band.each do |band| %>
-    <tr>
-      <td valign="top" width="100px"><%= band.title %><br>
-	   <%= link_to 'Show Band', band_path(band) %></td>
-	  <td><%= render band.songs %></td>
+<strong>The following bands matched your input</strong>
+<table cellspacing="8px">
+  
+  <% @foundband.each do |b| %>
+    <tr height="30px">
+      <td valign="bottom" width="100px"><strong><%= b.title %></strong></td>
+	  <td valign="bottom"><%= link_to 'Show Band', band_path(b) %></td>
+	  <td><%= render b.songs %></td>
 	
     </tr>
   <% end %>
 </table>
+<br><br>
+
+<% if @songlist == 1 %>
+	<strong>no songs matched your input</strong>
+
+	<% elsif @songlist == 2 %>
+
+<% else %>
+<strong>The following songs matched your input</strong>
+<table cellspacing="5 px">
+  <tr>
+    <th align="left">Song</th>
+    <th align="left">Link</th>
+	<th colspan="2"></th>
+  </tr>
+<tr>
+ <% @songs.each do |s| %>
+ 
+<tr>
+<td>	<%= s.title %> </td>
+<td>	<%= link_to 'link', s.link, :target => "_blank" %> </td>
+</tr>
+
+<% end %>
+<% end %>

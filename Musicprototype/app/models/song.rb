@@ -1,8 +1,8 @@
 class Song < ActiveRecord::Base
 	belongs_to :band
-	def self.search(search)
-		if search
-			self.where("title like ?", "%#{search}%")
+	def self.searchband(searchband)
+		if searchband
+			self.where("title like ?", "%#{searchband}%")
 		else
 			self.all
 		end

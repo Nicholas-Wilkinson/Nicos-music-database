@@ -8,4 +8,15 @@ class Band < ActiveRecord::Base
 			self.all
 		end
 	end
+	
+	def Song.search(search)
+		if search
+			Song.where("title like ?", "%#{search}%")
+		else
+			self.all
+		end
+	end
+	
+	
+
 end

@@ -42,10 +42,6 @@ class ArticlesController < ApplicationController
 	  redirect_to articles_path
 	end
 	
-	def download_file
-		send_file("#[Rails.root}/Guitar/StreetSpirit.docx",
-				filename: "StreetSpirit.docx")
-	end
 				
 	private
 		def article_params

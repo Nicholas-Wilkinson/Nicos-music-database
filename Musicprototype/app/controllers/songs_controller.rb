@@ -1,9 +1,9 @@
 class SongsController < ApplicationController
 
 	def index
-		@song = Song.search(params[:search])
+		@song = Song.searchband(params[:searchband])
 	end
-
+	
 	def create
 		@band = Band.find(params[:band_id])
 		@song = @band.songs.create(song_params)

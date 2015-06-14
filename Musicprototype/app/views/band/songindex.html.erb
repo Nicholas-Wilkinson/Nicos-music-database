@@ -1,14 +1,13 @@
-<p>
-  <h1><%= @band.title %></h1>
-</p>
- 
-<%= form_tag band_path, method: :get do %>
+<h1>Listing Songs</h1>
+<%= link_to 'Bands', band_index_path %>
+
+<%= form_tag band_songindex_path, method: :get do %>
   <p>
-    <%= text_field_tag :searchband, params[:searchband] %>
-	<%= submit_tag "Search Song" %>
+    <%= text_field_tag :searchsong, params[:searchsong] %>
+	<%= submit_tag "Search", :name => nil %>
   </p>
 <% end %>
- 
+
 <h2>Songs</h2>
 <table cellspacing="5 px">
   <tr>
@@ -29,5 +28,3 @@
 
 
 </table>
-
-<%= link_to 'Back', band_index_path %>
